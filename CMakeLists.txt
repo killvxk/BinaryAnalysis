@@ -3,8 +3,9 @@ project(BinaryLoader)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(BinaryLoader main.cpp loader.cc)
+add_executable(BinaryLoader loader.cc basic_capstone.cpp)
 
-
-set(CMAKE_CXX_FLAGS "-lbfd")
+target_link_libraries(BinaryLoader
+        PRIVATE bfd
+        capstone)
 
