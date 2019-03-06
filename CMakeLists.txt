@@ -15,6 +15,6 @@ add_executable(BinaryLoader loader/loader.cc basic_capstone.cpp basic_capstone_r
 
 target_link_libraries(BinaryLoader
         PRIVATE bfd
-        capstone)
+        CAPSTONE::CAPSTONE)
 
 add_subdirectory(synthesizer)

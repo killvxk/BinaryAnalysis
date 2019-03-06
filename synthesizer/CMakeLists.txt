@@ -7,6 +7,6 @@ add_executable(Synthesize main.cpp UnicornEngine.cpp Grammar.cpp MCTS.cpp Game.c
 
 target_link_libraries(
         Synthesize
-        PUBLIC unicorn
+        PUBLIC UNICORN::UNICORN
         pthread
 )
