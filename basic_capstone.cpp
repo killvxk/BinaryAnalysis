@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include <capstone/capstone.h>
+#include <iomanip>
 
-#include "loader.h"
+#include "loader/loader.h"
 
 int disasm(Binary *bin);
 
@@ -58,7 +59,14 @@ int disasm(Binary *bin) {
     }
 
     for (size_t i = 0; i < n; ++i) {
-        cout << hex << insns[i].address << "\n";
+        cout << hex << "0x" << insns[i].address << ": ";
+        for (size_t j = 0; j < 16; ++j) {
+            if (j < insns[i].size)
+            cout << hex << setw(2) << setfill('0') << int(insns[i].bytes[j]) << " ";
+            else
+                cout << "   ";
+        }
+        cout << insns[i].mnemonic << " " << insns[i].op_str << "\n";
     }
 
     cs_free(insns, n);
